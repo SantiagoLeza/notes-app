@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from 'react'
 
-function NoteBody({notes, setNotes, selectedNoteIndex, write, preview}) {
+function NoteBody({notes, setNotes, selectedNoteIndex, write, preview, darkMode}) {
+
+  if(selectedNoteIndex === -1){
+    return (
+      <div>
+        No notes
+      </div>
+    )
+  }
 
   if(write){
     return <NoteWrite
     notes={notes}
     setNotes={setNotes}
     selectedNoteIndex={selectedNoteIndex}
+    darkMode={darkMode}
     />
   }
   else if(preview){
@@ -45,7 +54,7 @@ function NotePreview({text}) {
   )
 }
 
-function NoteWrite({notes, setNotes, selectedNoteIndex}){
+function NoteWrite({notes, setNotes, selectedNoteIndex, darkMode}){
   const [text, setText] = useState(() => {
     if(selectedNoteIndex === -1){
       return ''
@@ -67,7 +76,7 @@ function NoteWrite({notes, setNotes, selectedNoteIndex}){
   }, [selectedNoteIndex]);
 
   var body = (
-    <div className='NoteBody'>
+    <div className={`NoteBody ${darkMode?'dark-notebody':''}`}>
       <textarea
       id='text'
       value={text}

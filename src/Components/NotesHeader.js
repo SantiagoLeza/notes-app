@@ -1,6 +1,6 @@
 import { CodeIcon, LinkIcon, PhotographIcon } from '@heroicons/react/solid'
 
-function NotesHeader({write, setWrite, preview, setPreview}) {
+function NotesHeader({write, setWrite, preview, setPreview, darkMode}) {
 
     const toggleButtons = (option) => {
         if (option === 'write') {
@@ -13,7 +13,7 @@ function NotesHeader({write, setWrite, preview, setPreview}) {
     }
 
   return (
-    <div className='NotesHeader'>
+    <div className={`NotesHeader ${darkMode?'dark-header':''}`}>
         <div className={`note-button ${write?'note-button-selected':''}`}
         onClick={() => toggleButtons('write')}
         >Write</div>

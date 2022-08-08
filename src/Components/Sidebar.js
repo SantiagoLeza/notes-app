@@ -1,10 +1,10 @@
 import React from 'react'
 import Notes from './Notes'
 
-function Sidebar({notes, addNotes, selectedNote, setSelectedNote}) {
+function Sidebar({notes, addNotes, selectedNote, setSelectedNote, darkMode}) {
 
    return (
-    <div className='Sidebar'>
+    <div className={`Sidebar ${darkMode?' dark-sidebar':''}`}>
         <div className='sidebar-header'>
             <h1>Notes</h1>
             <div className='plusIcon'
